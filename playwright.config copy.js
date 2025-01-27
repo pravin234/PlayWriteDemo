@@ -26,7 +26,11 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   //reporter: "html",
 
-  reporter: [["html", { outputFolder: "playwright-report" }]],
+  reporter: [
+    ["html", { outputFolder: "playwright-report" }],
+    ["list"], // Console output
+    ["allure-playwright"],
+  ],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -35,6 +39,11 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
+
+    headless: true,
+    baseURL: "https://rahulshettyacademy.com",
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
   },
 
   /* Configure projects for major browsers */
